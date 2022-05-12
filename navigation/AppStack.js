@@ -10,13 +10,13 @@ import TwoBHK from '../screens/TwoBHK';
 import ThreeBHK from '../screens/ThreeBHK';
 import LivingRoom from '../screens/LivingRoom';
 import kitchen from '../screens/kitchen';
+import SwitchDetail from '../screens/SwitchDetail';
 
 const Stack = createStackNavigator();
 
 const AppStack = () => {
   return (
     <Stack.Navigator>
-      
       <Stack.Screen
         name="TwoBHK"
         component={TwoBHK}
@@ -59,6 +59,29 @@ const AppStack = () => {
       <Stack.Screen
         name="kitchen"
         component={kitchen}
+        options={({navigation}) => ({
+          title: '',
+          headerStyle: {
+            backgroundColor: '#f9fafd',
+            shadowColor: '#f9fafd',
+            elevation: 0,
+          },
+          headerLeft: () => (
+            <View style={{marginLeft: 10}}>
+              <FontAwesome.Button
+                name="long-arrow-left"
+                size={25}
+                backgroundColor="#f9fafd"
+                color="#333"
+                onPress={() => navigation.navigate('TwoBHK')}
+              />
+            </View>
+          ),
+        })}
+      />
+      <Stack.Screen
+        name="SwitchDetail"
+        component={SwitchDetail}
         options={({navigation}) => ({
           title: '',
           headerStyle: {

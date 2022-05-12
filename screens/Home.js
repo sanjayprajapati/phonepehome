@@ -1,5 +1,5 @@
-import React, {useState,useEffect} from 'react';
-import {View, ScrollView,Text, ActivityIndicator, Button} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, ScrollView, Text, ActivityIndicator, Button} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -25,15 +25,15 @@ import BathroomThree from '../screens/bathroomThree';
 import BathroomFour from '../screens/bathroomFour';
 import Studyroom from '../screens/Studyroom';
 import switchController from '../screens/switchController';
+import SwitchDetail from '../screens/SwitchDetail';
 
 const Stack = createStackNavigator();
 
-  
 const Home = () => {
   const [appart, setAppart] = useState('');
 
   useEffect(() => {
-      getData();
+    getData();
   }, []);
 
   const getData = async () => {
@@ -50,177 +50,170 @@ const Home = () => {
       //console.log(error);
     }
   };
-//  const appartment = ()=> {
-  
-//    console.log(appart)
-//    if(appart == 'onebhk') {
-//      return(
-//       <Stack.Screen
-//         name="OneBHK"
-//         component={OneBHK}
-//         options={{header: () => null}}
-//       />
-//      );
-//    }else if (appart == 'twobhk'){
-    
-//     return(
-      
-//      );
-//    }
-//  }
-if( appart === '' || appart === null){
-    
-  return(
-    <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-      <ActivityIndicator size="large" color="#ff0000"/>
-    </View>
-  );
-}
+  //  const appartment = ()=> {
+
+  //    console.log(appart)
+  //    if(appart == 'onebhk') {
+  //      return(
+  //       <Stack.Screen
+  //         name="OneBHK"
+  //         component={OneBHK}
+  //         options={{header: () => null}}
+  //       />
+  //      );
+  //    }else if (appart == 'twobhk'){
+
+  //     return(
+
+  //      );
+  //    }
+  //  }
+  if (appart === '' || appart === null) {
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator size="large" color="#ff0000" />
+      </View>
+    );
+  }
 
   return (
     <Stack.Navigator>
-      {appart == '1'? <Stack.Screen
-        name="OneBHK"
-        component={OneBHK}
-        options={{
-          title: 'Controll Your Home',
-          headerStyle: {
-            backgroundColor: '#F88440',
-            height: 80,
-            borderBottomRightRadius: 20,
-            borderBottomLeftRadius: 20,
-            elevation: 0,
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-            width: '100%',
-          },
+      {appart == '1' ? (
+        <Stack.Screen
+          name="OneBHK"
+          component={OneBHK}
+          options={{
+            title: 'Controll Your Home',
+            headerStyle: {
+              backgroundColor: '#F88440',
+              height: 80,
+              borderBottomRightRadius: 20,
+              borderBottomLeftRadius: 20,
+              elevation: 0,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              width: '100%',
+            },
+          }}
+        />
+      ) : appart == '2' ? (
+        <Stack.Screen
+          name="TwoBHK"
+          component={TwoBHK}
+          options={{
+            title: 'Controll Your Home',
+            headerStyle: {
+              backgroundColor: '#F88440',
+              height: 80,
+              borderBottomRightRadius: 20,
+              borderBottomLeftRadius: 20,
+              elevation: 0,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              width: '100%',
+            },
+          }}
+        />
+      ) : appart == '3' ? (
+        <Stack.Screen
+          name="ThreeBHK"
+          component={ThreeBHK}
+          options={{
+            title: 'Controll Your Home',
+            headerStyle: {
+              backgroundColor: '#F88440',
+              height: 80,
+              borderBottomRightRadius: 20,
+              borderBottomLeftRadius: 20,
+              elevation: 0,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              width: '100%',
+            },
+          }}
+        />
+      ) : appart == '4' ? (
+        <Stack.Screen
+          name="FourBHK"
+          component={FourBHK}
+          options={{
+            title: 'Controll Your Home',
+            headerStyle: {
+              backgroundColor: '#F88440',
+              height: 80,
+              borderBottomRightRadius: 20,
+              borderBottomLeftRadius: 20,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              width: '100%',
+            },
+          }}
+        />
+      ) : appart == '5' ? (
+        <Stack.Screen
+          name="PentHouse"
+          component={PentHouse}
+          options={{
+            title: 'Controll Your Home',
+            headerStyle: {
+              backgroundColor: '#F88440',
+              height: 80,
+              borderBottomRightRadius: 20,
+              borderBottomLeftRadius: 20,
+              elevation: 0,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              width: '100%',
+            },
+          }}
+        />
+      ) : (
+        <Stack.Screen
+          name="6"
+          component={FarmHouse}
+          options={{
+            title: 'Controll Your Home',
+            headerStyle: {
+              backgroundColor: '#F88440',
+              height: 80,
+              borderBottomRightRadius: 20,
+              borderBottomLeftRadius: 20,
+              elevation: 0,
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              width: '100%',
+            },
+          }}
+        />
+      )}
 
-        }}
-      />: 
-      appart == '2'? <Stack.Screen
-      name="TwoBHK"
-      component={TwoBHK}
-      options={{
-        title: 'Controll Your Home',
-        headerStyle: {
-          backgroundColor: '#F88440',
-          height: 80,
-          borderBottomRightRadius: 20,
-          borderBottomLeftRadius: 20,
-          elevation: 0,
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-          fontWeight: 'bold',
-          width: '100%',
-        },
-
-      }}
-    />:
-    appart == '3'?<Stack.Screen
-    name="ThreeBHK"
-    component={ThreeBHK}
-    options={{
-      title: 'Controll Your Home',
-      headerStyle: {
-        backgroundColor: '#F88440',
-        height: 80,
-        borderBottomRightRadius: 20,
-        borderBottomLeftRadius: 20,
-        elevation: 0,
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        width: '100%',
-      },
-
-    }}
-  />:
-  appart == '4'?
-  <Stack.Screen
-    name="FourBHK"
-    component={FourBHK}
-    options={{
-      title: 'Controll Your Home',
-      headerStyle: {
-        backgroundColor: '#F88440',
-        height: 80,
-        borderBottomRightRadius: 20,
-        borderBottomLeftRadius: 20,
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        width: '100%',
-      },
-
-    }}
-  />:
-  appart == '5'?
-  <Stack.Screen
-    name="PentHouse"
-    component={PentHouse}
-    options={{
-      title: 'Controll Your Home',
-      headerStyle: {
-        backgroundColor: '#F88440',
-        height: 80,
-        borderBottomRightRadius: 20,
-        borderBottomLeftRadius: 20,
-        elevation: 0,
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        width: '100%',
-      },
-
-    }}
-  />:
-    <Stack.Screen
-    name="6"
-    component={FarmHouse}
-    options={{
-      title: 'Controll Your Home',
-      headerStyle: {
-        backgroundColor: '#F88440',
-        height: 80,
-        borderBottomRightRadius: 20,
-        borderBottomLeftRadius: 20,
-        elevation: 0,
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-        width: '100%',
-      },
-
-    }}
-  />
-      }
-        
-      
       <Stack.Screen
         name="Customization"
         component={Customization}
         options={{header: () => null}}
       />
-      
-      
+
       <Stack.Screen
         name="LivingRoom"
         component={LivingRoom}
-        options={{header: () => null
-        }}
+        options={{header: () => null}}
       />
       <Stack.Screen
         name="kitchen"
         component={kitchen}
-        options={{header: () => null
-        }}
+        options={{header: () => null}}
       />
       <Stack.Screen
         name="bedroomOne"
@@ -273,9 +266,13 @@ if( appart === '' || appart === null){
         component={switchController}
         options={{header: () => null}}
       />
+      <Stack.Screen
+        name="SwitchDetail"
+        component={SwitchDetail}
+        options={{header: () => null}}
+      />
     </Stack.Navigator>
   );
-
 };
 
 export default Home;

@@ -19,10 +19,22 @@ const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const {signIn} = React.useContext(AuthContext);
+  const [date, setDate] = useState(new Date());
+  const [mode, setMode] = useState('date');
+  const [shwo, setShow] = useState(false);
+  const [text, setText] = useState('Empty');
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'android');
+    setDate(currentDate);
+
+    let tempDate = new Date(currentDate);
+  };
   //const { getAppart } = React.useContext(AuthContext);
-  const HOST = 'http://origin8solutions.com/loginapi.php?email=';
+  const HOST = 'http://10.0.2.2/origin8solutions/loginapi.php?email=';
   const userLogin = () => {
-    //console.log(password);
+    console.log(password);
     if (!email.trim()) {
       alert('Please Enter Email');
       return;
@@ -30,9 +42,77 @@ const LoginScreen = ({navigation}) => {
     if (!password.trim()) {
       alert('Please Enter Password');
       return;
+    } else {
+      console.log(HOST + email + '&password=' + password);
+      fetch(HOST + email + '&password=' + password, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      })
+        .then(response => response.json())
+        .then(responseJson => {
+          console.log(responseJson);
+          if (responseJson['code'] == '1') {
+            //alert('1')
+            let foundUser = responseJson['data'];
+            AsyncStorage.setItem('userData', JSON.stringify(foundUser));
+            signIn(foundUser);
+          } else if (responseJson['code'] == '2') {
+            //alert('2')
+            let foundUser = responseJson['data'];
+            AsyncStorage.setItem('userData', JSON.stringify(foundUser));
+            //console.log(value);
+            signIn(foundUser);
+            // navigation.navigate('TwoBHK');
+          } else if (responseJson['code'] == '3') {
+            let foundUser = responseJson['data'];
+            AsyncStorage.setItem('userData', JSON.stringify(foundUser));
+            //console.log(value);
+            signIn(foundUser);
+            //navigation.navigate('ThreeBHK');
+          } else if (responseJson['code'] == '4') {
+            let foundUser = responseJson['data'];
+            AsyncStorage.setItem('userData', JSON.stringify(foundUser));
+            //console.log(value);
+            signIn(foundUser);
+            // navigation.navigate('FourBHK');
+          } else if (responseJson['code'] == '5') {
+            let foundUser = responseJson['data'];
+            AsyncStorage.setItem('userData', JSON.stringify(foundUser));
+            //console.log(value);
+            signIn(foundUser);
+            // navigation.navigate('PentHouse');
+          } else if (responseJson['code'] == '6') {
+            let foundUser = responseJson['data'];
+            AsyncStorage.setItem('userData', JSON.stringify(foundUser));
+            //console.log(value);
+            signIn(foundUser);
+            // navigation.navigate('FarmHouse');
+          } else if (responseJson['code'] == '7') {
+            let foundUser = responseJson['data'];
+            AsyncStorage.setItem('userData', JSON.stringify(foundUser));
+            console.log(foundUser);
+            //getAppart(foundUser);
+            // redirect to profile page
+            console.log('Successfully Login');
+            navigation.navigate('Dashboard');
+          } else {
+            alert('Wrong Login Details');
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
     }
 
-    login(email, password);
+    // login(email, password);
+    // console.log('working');
   };
 
   return (

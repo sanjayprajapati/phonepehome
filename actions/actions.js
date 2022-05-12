@@ -4,7 +4,7 @@ export const login = async (email, password) => {
     const config = {headers: {'Content-Type': 'application/json'}};
 
     const {data} = await axios.post(
-      `http://origin8solutions.com/api/v1/index.php`,
+      `http://origin8solutions.com/loginapi.php?email=${email}&password=${password}`,
       {email, password},
       config,
     );

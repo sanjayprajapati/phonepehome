@@ -13,6 +13,8 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Entypo from 'react-native-vector-icons/Entypo';
+import Alarm from './SwitchDetail';
 import SpinnerButton from 'react-native-spinner-button';
 //import { createStackNavigator, createAppContainer } from "react-navigation";
 
@@ -538,34 +540,39 @@ const SwitchController = ({route, navigation}) => {
               onValueChange={ switch1OnOff}
               value={isOnn1}
             /> */}
-                  <SpinnerButton
-                    buttonStyle={styles.buttonStyle}
-                    isLoading={myVar}
-                    disabled={flag}
-                    key={index}
-                    buttonStyle={{
-                      backgroundColor: myTxt == 'ON' ? '#fb8d4e' : '#eeeeee',
-                      width: 60,
-                      height: 35,
-                      borderRadius: 20,
-                      alignSelf: 'flex-end',
-                    }}
-                    spinnerType="BallIndicator"
-                    onPress={() => switchControll(index, myTxt)}
-                    animationType={'flipInY'}
-                    indicatorCount={10}
-                    animateHeight={35}
-                    animateWidth={60}
-                    animateRadius={20}
-                    animatedDuration={400}
-                    spinnerColor={myTxt == 'ON' ? '#fff' : '#000'}
-                    ide={20}>
-                    <Text
+                  <View>
+                    <SpinnerButton
+                      isLoading={myVar}
+                      disabled={flag}
                       key={index}
-                      style={{color: myTxt == 'ON' ? '#fff' : '#000'}}>
-                      {myTxt}
-                    </Text>
-                  </SpinnerButton>
+                      buttonStyle={{
+                        backgroundColor: myTxt == 'ON' ? '#fb8d4e' : '#eeeeee',
+                        width: 60,
+                        height: 35,
+                        borderRadius: 20,
+                        alignSelf: 'flex-end',
+                      }}
+                      spinnerType="BallIndicator"
+                      onPress={() => switchControll(index, myTxt)}
+                      animationType={'flipInY'}
+                      indicatorCount={10}
+                      animateHeight={35}
+                      animateWidth={60}
+                      animateRadius={20}
+                      animatedDuration={400}
+                      spinnerColor={myTxt == 'ON' ? '#fff' : '#000'}
+                      ide={20}>
+                      <Text
+                        key={index}
+                        style={{color: myTxt == 'ON' ? '#fff' : '#000'}}>
+                        {myTxt}
+                      </Text>
+                    </SpinnerButton>
+                  </View>
+                  <Button
+                    title="Details"
+                    onPress={() => navigation.navigate('SwitchDetail')}
+                  />
                 </View>
               );
             }
@@ -591,7 +598,7 @@ const styles = StyleSheet.create({
   },
   switch: {
     alignItems: 'center',
-    elevation: 2,
+    elevation: 3,
     backgroundColor: 'rgba(255,255,255,1)',
     paddingBottom: 20,
     paddingLeft: 20,
@@ -603,6 +610,7 @@ const styles = StyleSheet.create({
     width: '100%',
     borderRadius: 10,
     opacity: 1,
+    display: 'flex',
   },
   header: {
     backgroundColor: '#fa8642',
