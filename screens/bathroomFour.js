@@ -1,5 +1,15 @@
-import React, {useState,useEffect,useCallback} from 'react';
-import {View, ImageBackground , Switch, StyleSheet, Text, TextInput, ScrollView,TouchableOpacity,ActivityIndicator} from 'react-native';
+import React, {useState, useEffect, useCallback} from 'react';
+import {
+  View,
+  ImageBackground,
+  Switch,
+  StyleSheet,
+  Text,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import CustomHeader from '../components/Header';
 import Animated from 'react-native-reanimated';
@@ -7,32 +17,28 @@ import BottomSheet from 'reanimated-bottom-sheet';
 import * as ImagePicker from 'react-native-image-crop-picker';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import SpinnerButton from 'react-native-spinner-button';
-import DotLoader from 'react-native-three-dots-loader'
-import { isStatement } from '@babel/types';
-
-
+import DotLoader from 'react-native-three-dots-loader';
+import {isStatement} from '@babel/types';
 
 const BathroomFour = ({navigation}) => {
-  
   const [isLoading, setLoading] = useState(false);
   const [isOnnAll, setIsOnnAll] = useState(false);
   const [isOnn1, setIsOnn1] = useState('OFF');
   const [isOnn1loading, setIsOnn1loding] = useState(false);
-  const [isPinval1, setIsPinval1] =useState('0');
+  const [isPinval1, setIsPinval1] = useState('0');
   const [isOnn2, setIsOnn2] = useState('OFF');
   const [isOnn2loading, setIsOnn2Loading] = useState(false);
-  const [isPinval2, setIsPinval2] =useState('0');
+  const [isPinval2, setIsPinval2] = useState('0');
   const [isOnn3, setIsOnn3] = useState('OFF');
   const [isOnn3loading, setIsOnn3Loading] = useState(false);
-  const [isPinval3, setIsPinval3] =useState('0');  
+  const [isPinval3, setIsPinval3] = useState('0');
   const [isOnn4, setIsOnn4] = useState('OFF');
   const [isOnn4loading, setIsOnn4Loading] = useState(false);
-  const [isPinval4, setIsPinval4] =useState('0');
+  const [isPinval4, setIsPinval4] = useState('0');
   const [isOnn5, setIsOnn5] = useState('OFF');
   const [isOnn5loading, setIsOnn5Loading] = useState(false);
-  const [isPinval5, setIsPinval5] =useState('0');
+  const [isPinval5, setIsPinval5] = useState('0');
 
-  
   // const Switch1 = () => setIsOnn1(previousState => !previousState);
   // const Switch2 = () => setIsOnn2(previousState => !previousState);
   // const Switch3 = () => setIsOnn3(previousState => !previousState);
@@ -45,67 +51,77 @@ const BathroomFour = ({navigation}) => {
     setLoading(true);
     setFlag(true);
     setTimeout(() => {
-    if(btnText == 'on'){
-      fetch('http://192.168.1.5/twobhk/bathroomfour/allpin.php?token='+token+'&allpin=on', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          data: data,
-        }),
-      });
-      setBtnText('off');
-      setIsOnn1('ON');
-      setIsPinval1('0');
-      setIsOnn2('ON');
-      setIsPinval2('0');
-      setIsOnn3('ON');
-      setIsPinval3('0');
-      setIsOnn4('ON');
-      setIsPinval4('0');
-      setIsOnn5('ON');
-      setIsPinval5('0');
-      AsyncStorage.setItem('BTHRF_switchOnestatus', 'ON');
-      AsyncStorage.setItem('BTHRF_switchTwostatus', 'ON');
-      AsyncStorage.setItem('BTHRF_switchThreestatus', 'ON');
-      AsyncStorage.setItem('BTHRF_switchFourstatus', 'ON');
-      AsyncStorage.setItem('BTHRF_switchFivestatus', 'ON');
-      AsyncStorage.setItem('BTHRF_AllswitchStatus', 'off');
-    }else {
-      fetch('http://192.168.1.5/twobhk/bathroomfour/allpin.php?token='+token+'&allpin=off', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          data: data,
-        }),
-      });
-      setBtnText('on');
-      setIsOnn1('OFF');
-      setIsPinval1('1');
-      setIsOnn2('OFF');
-      setIsPinval2('1');
-      setIsOnn3('OFF');
-      setIsPinval3('1');
-      setIsOnn4('OFF');
-      setIsPinval4('1');
-      setIsOnn5('OFF');
-      setIsPinval5('1');
-      AsyncStorage.setItem('BTHRF_switchOnestatus', 'OFF');
-      AsyncStorage.setItem('BTHRF_switchTwostatus', 'OFF');
-      AsyncStorage.setItem('BTHRF_switchThreestatus', 'OFF');
-      AsyncStorage.setItem('BTHRF_switchFourstatus', 'OFF');
-      AsyncStorage.setItem('BTHRF_switchFivestatus', 'OFF');
-      AsyncStorage.setItem('BTHRF_AllswitchStatus', 'on');
-    }
-      
-          setLoading(false);
-          setFlag(false);
-      }, 3000);
+      if (btnText == 'on') {
+        fetch(
+          'http://origin8solutions.com/twobhk/bathroomfour/allpin.php?token=' +
+            token +
+            '&allpin=on',
+          {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              data: data,
+            }),
+          },
+        );
+        setBtnText('off');
+        setIsOnn1('ON');
+        setIsPinval1('0');
+        setIsOnn2('ON');
+        setIsPinval2('0');
+        setIsOnn3('ON');
+        setIsPinval3('0');
+        setIsOnn4('ON');
+        setIsPinval4('0');
+        setIsOnn5('ON');
+        setIsPinval5('0');
+        AsyncStorage.setItem('BTHRF_switchOnestatus', 'ON');
+        AsyncStorage.setItem('BTHRF_switchTwostatus', 'ON');
+        AsyncStorage.setItem('BTHRF_switchThreestatus', 'ON');
+        AsyncStorage.setItem('BTHRF_switchFourstatus', 'ON');
+        AsyncStorage.setItem('BTHRF_switchFivestatus', 'ON');
+        AsyncStorage.setItem('BTHRF_AllswitchStatus', 'off');
+      } else {
+        fetch(
+          'http://origin8solutions.com/twobhk/bathroomfour/allpin.php?token=' +
+            token +
+            '&allpin=off',
+          {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              data: data,
+            }),
+          },
+        );
+        setBtnText('on');
+        setIsOnn1('OFF');
+        setIsPinval1('1');
+        setIsOnn2('OFF');
+        setIsPinval2('1');
+        setIsOnn3('OFF');
+        setIsPinval3('1');
+        setIsOnn4('OFF');
+        setIsPinval4('1');
+        setIsOnn5('OFF');
+        setIsPinval5('1');
+        AsyncStorage.setItem('BTHRF_switchOnestatus', 'OFF');
+        AsyncStorage.setItem('BTHRF_switchTwostatus', 'OFF');
+        AsyncStorage.setItem('BTHRF_switchThreestatus', 'OFF');
+        AsyncStorage.setItem('BTHRF_switchFourstatus', 'OFF');
+        AsyncStorage.setItem('BTHRF_switchFivestatus', 'OFF');
+        AsyncStorage.setItem('BTHRF_AllswitchStatus', 'on');
+      }
+
+      setLoading(false);
+      setFlag(false);
+    }, 3000);
   });
 
   const [isEditing, setEditing] = useState(false);
@@ -114,14 +130,14 @@ const BathroomFour = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [appart, setAppart] = useState('');
   const [token, setToken] = useState('');
-  
-  const savePinNameOne = (textInputValue1)=> {
+
+  const savePinNameOne = textInputValue1 => {
     //setTextInputValue()
     AsyncStorage.setItem('pinNameOne', JSON.stringify(textInputValue1));
-     setTextInputValue(textInputValue1)
+    setTextInputValue(textInputValue1);
     setEditing(false);
-   console.log(textInputValue1);
-  }
+    console.log(textInputValue1);
+  };
   const getPinNameOne = async () => {
     try {
       AsyncStorage.getItem('pinNameOne').then(value => {
@@ -129,15 +145,15 @@ const BathroomFour = ({navigation}) => {
           //alert('dddd')
           let data = JSON.parse(value);
           setTextInputValue(data);
-          console.log(data)
+          console.log(data);
           //console.log(email)
         }
       });
     } catch (error) {
       //console.log(error);
     }
-  }
-  const getToken = async() => {
+  };
+  const getToken = async () => {
     try {
       AsyncStorage.getItem('userData').then(value => {
         if (value != null) {
@@ -150,7 +166,7 @@ const BathroomFour = ({navigation}) => {
     } catch (error) {
       //console.log(error);
     }
-  }
+  };
   const getData = async () => {
     try {
       AsyncStorage.getItem('userData').then(value => {
@@ -166,337 +182,320 @@ const BathroomFour = ({navigation}) => {
     }
   };
 
- useEffect(() => {
-  getPinNameOne();
+  useEffect(() => {
+    getPinNameOne();
 
-  getData();
-  //getToken();
- // toggleSwitch();
+    getData();
+    //getToken();
+    // toggleSwitch();
     AsyncStorage.getItem('BTHRF_switchOnestatus').then(value => {
-      if (value === 'ON') {        
+      if (value === 'ON') {
         setIsOnn1('ON');
         setIsPinval1('0');
-        console.log('mkkjk= '+isOnn1)
+        console.log('mkkjk= ' + isOnn1);
       } else {
         setIsOnn1('OFF');
         setIsPinval1('1');
-        console.log('kjhgjkgh'+value)
+        console.log('kjhgjkgh' + value);
       }
     });
     AsyncStorage.getItem('BTHRF_switchTwostatus').then(value => {
       if (value === 'ON') {
-        
         setIsOnn2('ON');
         setIsPinval2('0');
-        console.log('mkkjk= '+isOnn2)
+        console.log('mkkjk= ' + isOnn2);
       } else {
         setIsOnn2('OFF');
         setIsPinval2('1');
-        console.log('kjhgjkgh'+value)
+        console.log('kjhgjkgh' + value);
       }
     });
     AsyncStorage.getItem('BTHRF_switchThreestatus').then(value => {
       if (value === 'ON') {
-        
         setIsOnn3('ON');
         setIsPinval3('0');
-        console.log('mkkjk= '+isOnn3)
+        console.log('mkkjk= ' + isOnn3);
       } else {
         setIsOnn3('OFF');
         setIsPinval3('1');
-        console.log('kjhgjkgh'+value)
+        console.log('kjhgjkgh' + value);
       }
     });
     AsyncStorage.getItem('BTHRF_switchFourstatus').then(value => {
       if (value === 'ON') {
-        
         setIsOnn4('ON');
         setIsPinval4('0');
-        console.log('mkkjk= '+isOnn1)
+        console.log('mkkjk= ' + isOnn1);
       } else {
         setIsOnn4('OFF');
         setIsPinval4('1');
-        console.log('kjhgjkgh'+value)
+        console.log('kjhgjkgh' + value);
       }
     });
     AsyncStorage.getItem('BTHRF_switchFivestatus').then(value => {
       if (value === 'ON') {
-        
         setIsOnn5('ON');
         setIsPinval5('0');
-        console.log('mkkjk= '+isOnn1)
+        console.log('mkkjk= ' + isOnn1);
       } else {
         setIsOnn5('OFF');
         setIsPinval5('1');
-        console.log('kjhgjkgh'+value)
+        console.log('kjhgjkgh' + value);
       }
     });
     AsyncStorage.getItem('BTHRF_AllswitchStatus').then(value => {
-      if (value === 'off') {        
+      if (value === 'off') {
         setBtnText('off');
       } else {
         setBtnText('on');
       }
     });
-}, []);
+  }, []);
   const HOST = 'http://origin8solutions.com/switchcontroller.php?apikey=';
-  const APPART_TYPE = appart+'/';
+  const APPART_TYPE = appart + '/';
   const ROOM_TYPE = 'bathroomfour/';
   //
-  const switchAllOnOff = ()=> {
-
-  }
-  const switch1OnOff = ()=> {
+  const switchAllOnOff = () => {};
+  const switch1OnOff = () => {
     //getToken();
     //setFlag(true);
     //Switch1();
     setIsOnn1loding(true);
     setFlag(true);
     setTimeout(() => {
-    if(isOnn1 === 'OFF') {
-      setIsPinval1('0');
-      setIsOnn1('ON');
-      AsyncStorage.setItem('BTHRF_switchOnestatus', 'ON');
-      setBtnText('off');
-      AsyncStorage.setItem('BTHRF_AllswitchStatus', 'off');
-    }
-    if(isOnn1 === "ON") {
-      setIsPinval1('1');
-      setIsOnn1('OFF');
-      AsyncStorage.setItem('BTHRF_switchOnestatus', 'OFF');
-      setBtnText('on');
-      AsyncStorage.setItem('BTHRF_AllswitchStatus', 'on');
-    }
-    
-    const finalrul = HOST+token+'&room=10&switch1='+isPinval1;
-    console.log(finalrul)
-    fetch(finalrul, {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: email,
-      }),
-    })
-    .then(response => response.json())
-    .then(responseJson => {
-      //getData();
-      // console.log(responseJson);
-      if(responseJson['code'] == '1'){
-        console.log(responseJson['data']);             
+      if (isOnn1 === 'OFF') {
+        setIsPinval1('0');
+        setIsOnn1('ON');
+        AsyncStorage.setItem('BTHRF_switchOnestatus', 'ON');
+        setBtnText('off');
+        AsyncStorage.setItem('BTHRF_AllswitchStatus', 'off');
       }
-      
-    })
-    .catch(error => {
-      console.error(error);
-    }); 
-    setIsOnn1loding(false);
-    setFlag(false);
-  }, 1000);    
-      
-  }
-  const switch2OnOff = ()=> {
+      if (isOnn1 === 'ON') {
+        setIsPinval1('1');
+        setIsOnn1('OFF');
+        AsyncStorage.setItem('BTHRF_switchOnestatus', 'OFF');
+        setBtnText('on');
+        AsyncStorage.setItem('BTHRF_AllswitchStatus', 'on');
+      }
+
+      const finalrul = HOST + token + '&room=10&switch1=' + isPinval1;
+      console.log(finalrul);
+      fetch(finalrul, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      })
+        .then(response => response.json())
+        .then(responseJson => {
+          //getData();
+          // console.log(responseJson);
+          if (responseJson['code'] == '1') {
+            console.log(responseJson['data']);
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      setIsOnn1loding(false);
+      setFlag(false);
+    }, 1000);
+  };
+  const switch2OnOff = () => {
     setIsOnn2Loading(true);
     setFlag(true);
-   // Switch2();
-   setTimeout(()=> {
-        if(isOnn2 == 'OFF') {
-          setIsPinval2('0');
-          setIsOnn2('ON');
-          AsyncStorage.setItem('BTHRF_switchTwostatus', 'ON');
-          setBtnText('off');
-          AsyncStorage.setItem('BTHRF_AllswitchStatus', 'off');
-        }
-        if(isOnn2 == 'ON') {
-          setIsPinval2('1');
-          setIsOnn2('OFF');
-          AsyncStorage.setItem('BTHRF_switchTwostatus', 'OFF');
-          setBtnText('on');
-          AsyncStorage.setItem('BTHRF_AllswitchStatus', 'on');
-        }
+    // Switch2();
+    setTimeout(() => {
+      if (isOnn2 == 'OFF') {
+        setIsPinval2('0');
+        setIsOnn2('ON');
+        AsyncStorage.setItem('BTHRF_switchTwostatus', 'ON');
+        setBtnText('off');
+        AsyncStorage.setItem('BTHRF_AllswitchStatus', 'off');
+      }
+      if (isOnn2 == 'ON') {
+        setIsPinval2('1');
+        setIsOnn2('OFF');
+        AsyncStorage.setItem('BTHRF_switchTwostatus', 'OFF');
+        setBtnText('on');
+        AsyncStorage.setItem('BTHRF_AllswitchStatus', 'on');
+      }
 
-          const finalrul = HOST+token+'&room=10&switch2='+isPinval2;
-          console.log(finalrul)
-          fetch(finalrul, {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json, text/plain, */*',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              email: email,
-            }),
-          })
-          .then(response => response.json())
-          .then(responseJson => {
-            //getData();
-           // console.log(responseJson);
-            if(responseJson['code'] == '1'){
-              console.log(responseJson['data']);             
-            }
-            
-          })
-          .catch(error => {
-            console.error(error);
-          });
+      const finalrul = HOST + token + '&room=10&switch2=' + isPinval2;
+      console.log(finalrul);
+      fetch(finalrul, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      })
+        .then(response => response.json())
+        .then(responseJson => {
+          //getData();
+          // console.log(responseJson);
+          if (responseJson['code'] == '1') {
+            console.log(responseJson['data']);
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
 
-          setIsOnn2Loading(false);          
-          setFlag(false);
-        }, 1500);
+      setIsOnn2Loading(false);
+      setFlag(false);
+    }, 1500);
+  };
+  const switch3OnOff = () => {
+    // Switch3();
+    setIsOnn3Loading(true);
+    setFlag(true);
+    setTimeout(() => {
+      if (isOnn3 == 'OFF') {
+        setIsPinval3('0');
+        setIsOnn3('ON');
+        AsyncStorage.setItem('BTHRF_switchThreestatus', 'ON');
+        setBtnText('off');
+        AsyncStorage.setItem('BTHRF_AllswitchStatus', 'off');
+      }
+      if (isOnn3 == 'ON') {
+        setIsPinval3('1');
+        setIsOnn3('OFF');
+        AsyncStorage.setItem('BTHRF_switchThreestatus', 'OFF');
+        setBtnText('on');
+        AsyncStorage.setItem('BTHRF_AllswitchStatus', 'on');
+      }
 
-        
-  }
-  const switch3OnOff = ()=> {
-   // Switch3();
-   setIsOnn3Loading(true);
-   setFlag(true);
-   setTimeout(()=>{
-    if(isOnn3 == 'OFF') {
-      setIsPinval3('0');
-      setIsOnn3('ON');
-      AsyncStorage.setItem('BTHRF_switchThreestatus', 'ON');
-      setBtnText('off');
-      AsyncStorage.setItem('BTHRF_AllswitchStatus', 'off');
-    }
-    if(isOnn3 == 'ON') {
-      setIsPinval3('1');
-      setIsOnn3('OFF');
-      AsyncStorage.setItem('BTHRF_switchThreestatus', 'OFF');
-      setBtnText('on');
-      AsyncStorage.setItem('BTHRF_AllswitchStatus', 'on');
-    }
-    
-          const finalrul = HOST+token+'&room=10&switch3='+isPinval3;
-          console.log(finalrul)
-          fetch(finalrul, {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json, text/plain, */*',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              email: email,
-            }),
-          })
-          .then(response => response.json())
-          .then(responseJson => {
-            //getData();
-           // console.log(responseJson);
-            if(responseJson['code'] == '1'){
-              console.log(responseJson['data']);             
-            }
-            
-          })
-          .catch(error => {
-            console.error(error);
-          });
-          setFlag(false);
-          setIsOnn3Loading(false);
+      const finalrul = HOST + token + '&room=10&switch3=' + isPinval3;
+      console.log(finalrul);
+      fetch(finalrul, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      })
+        .then(response => response.json())
+        .then(responseJson => {
+          //getData();
+          // console.log(responseJson);
+          if (responseJson['code'] == '1') {
+            console.log(responseJson['data']);
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      setFlag(false);
+      setIsOnn3Loading(false);
+    }, 1500);
+  };
 
-        }, 1500);
-
-  }
-        
-  const switch4OnOff = ()=> {
+  const switch4OnOff = () => {
     //Switch4();
     setIsOnn4Loading(true);
     setFlag(true);
-    setTimeout(()=> {
-    if(isOnn4 == 'OFF') {
-      setIsPinval4('0');
-      setIsOnn4('ON');
-      AsyncStorage.setItem('BTHRF_switchFourstatus', 'ON');
-      setBtnText('off');
-      AsyncStorage.setItem('BTHRF_AllswitchStatus', 'off');
-    }
-    if(isOnn4 == 'ON') {
-      setIsPinval4('1');
-      setIsOnn4('OFF');
-      AsyncStorage.setItem('BTHRF_switchFourstatus', 'OFF');
-      setBtnText('on');
-      AsyncStorage.setItem('BTHRF_AllswitchStatus', 'on');
-    }
-    
-          const finalrul = HOST+token+'&room=10&switch4='+isPinval4;
-          console.log(finalrul)
-          fetch(finalrul, {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json, text/plain, */*',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              email: email,
-            }),
-          })
-          .then(response => response.json())
-          .then(responseJson => {
-            //getData();
-           // console.log(responseJson);
-            if(responseJson['code'] == '1'){
-              console.log(responseJson['data']);             
-            }
-            
-          })
-          .catch(error => {
-            console.error(error);
-          });
+    setTimeout(() => {
+      if (isOnn4 == 'OFF') {
+        setIsPinval4('0');
+        setIsOnn4('ON');
+        AsyncStorage.setItem('BTHRF_switchFourstatus', 'ON');
+        setBtnText('off');
+        AsyncStorage.setItem('BTHRF_AllswitchStatus', 'off');
+      }
+      if (isOnn4 == 'ON') {
+        setIsPinval4('1');
+        setIsOnn4('OFF');
+        AsyncStorage.setItem('BTHRF_switchFourstatus', 'OFF');
+        setBtnText('on');
+        AsyncStorage.setItem('BTHRF_AllswitchStatus', 'on');
+      }
 
-          setIsOnn4Loading(false);
-          setFlag(false);
-        },1000);  
-  }
-  const switch5OnOff = ()=> {
-   // Switch5();
-   setIsOnn5Loading(true);
-   setFlag(true);
-   setTimeout(()=> {
-    if(isOnn5 == 'OFF') {
-      setIsPinval5('0');
-      setIsOnn5('ON');
-      AsyncStorage.setItem('BTHRF_switchFivestatus', 'ON');
-      setBtnText('off');
-      AsyncStorage.setItem('BTHRF_AllswitchStatus', 'off');
-    }
-    if(isOnn5 == 'ON') {
-      setIsPinval5('1');
-      setIsOnn5('OFF');
-      AsyncStorage.setItem('BTHRF_switchFivestatus', 'OFF');
-      setBtnText('on');
-      AsyncStorage.setItem('BTHRF_AllswitchStatus', 'on');
-    }
-    
-          const finalrul = HOST+token+'&room=10&switch5='+isPinval5;
-          console.log(finalrul)
-          fetch(finalrul, {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json, text/plain, */*',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              email: email,
-            }),
-          })
-          .then(response => response.json())
-          .then(responseJson => {
-            //getData();
-           // console.log(responseJson);
-            if(responseJson['code'] == '1'){
-              console.log(responseJson['data']);             
-            }
-            
-          })
-          .catch(error => {
-            console.error(error);
-          });
-          setFlag(false);
-          setIsOnn5Loading(false);
-        }, 1500);
+      const finalrul = HOST + token + '&room=10&switch4=' + isPinval4;
+      console.log(finalrul);
+      fetch(finalrul, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      })
+        .then(response => response.json())
+        .then(responseJson => {
+          //getData();
+          // console.log(responseJson);
+          if (responseJson['code'] == '1') {
+            console.log(responseJson['data']);
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
 
-  }
+      setIsOnn4Loading(false);
+      setFlag(false);
+    }, 1000);
+  };
+  const switch5OnOff = () => {
+    // Switch5();
+    setIsOnn5Loading(true);
+    setFlag(true);
+    setTimeout(() => {
+      if (isOnn5 == 'OFF') {
+        setIsPinval5('0');
+        setIsOnn5('ON');
+        AsyncStorage.setItem('BTHRF_switchFivestatus', 'ON');
+        setBtnText('off');
+        AsyncStorage.setItem('BTHRF_AllswitchStatus', 'off');
+      }
+      if (isOnn5 == 'ON') {
+        setIsPinval5('1');
+        setIsOnn5('OFF');
+        AsyncStorage.setItem('BTHRF_switchFivestatus', 'OFF');
+        setBtnText('on');
+        AsyncStorage.setItem('BTHRF_AllswitchStatus', 'on');
+      }
+
+      const finalrul = HOST + token + '&room=10&switch5=' + isPinval5;
+      console.log(finalrul);
+      fetch(finalrul, {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json, text/plain, */*',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      })
+        .then(response => response.json())
+        .then(responseJson => {
+          //getData();
+          // console.log(responseJson);
+          if (responseJson['code'] == '1') {
+            console.log(responseJson['data']);
+          }
+        })
+        .catch(error => {
+          console.error(error);
+        });
+      setFlag(false);
+      setIsOnn5Loading(false);
+    }, 1500);
+  };
   // const [load, setLoad]=useState(false);
   // const [theArray, setTheArray] = useState([]);
   // const _onItemPress= (pinName)=> {
@@ -508,30 +507,32 @@ const BathroomFour = ({navigation}) => {
   //     setLoad(false);
   //   }, 2000);
   // }
-    
- if(token == '' || token == null ){
-  getToken();
-  return(
-    <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-      <ActivityIndicator size="large" color="#ff0000"/>
-    </View>
-  );
- }
+
+  if (token == '' || token == null) {
+    getToken();
+    return (
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ActivityIndicator size="large" color="#ff0000" />
+      </View>
+    );
+  }
   return (
     <View style={styles.container}>
-     <View style={styles.header}>
-      <TouchableOpacity 
-            style={{ /* Put your style here */}}
-            onPress={() => navigation.goBack()} >
-        
-            <FontAwesome name="long-arrow-left" size={24} color="#fff"  />
-            
+      <View style={styles.header}>
+        <TouchableOpacity
+          style={
+            {
+              /* Put your style here */
+            }
+          }
+          onPress={() => navigation.goBack()}>
+          <FontAwesome name="long-arrow-left" size={24} color="#fff" />
         </TouchableOpacity>
-            <Text style={styles.pageTitle}>Bath Room Four</Text>
-            <SpinnerButton
+        <Text style={styles.pageTitle}>Bath Room Four</Text>
+        <SpinnerButton
           buttonStyle={styles.buttonStyle1}
           isLoading={isLoading}
-          spinnerType='UIActivityIndicator'
+          spinnerType="UIActivityIndicator"
           onPress={handleButtonPress}
           animationType={'flipInY'}
           indicatorCount={10}
@@ -539,18 +540,17 @@ const BathroomFour = ({navigation}) => {
           animateWidth={80}
           animateRadius={20}
           animatedDuration={300}
-          spinnerColor={'#999999'}
-        >
+          spinnerColor={'#999999'}>
           <Text style={styles.buttonText}>All {btnText}</Text>
         </SpinnerButton>
-      </View> 
-       
+      </View>
+
       <ScrollView style={{padding: 10}}>
-      {/* <Text style={styles.livingroom}>Living Room</Text> */}
-      {/* <View>
+        {/* <Text style={styles.livingroom}>Living Room</Text> */}
+        {/* <View>
       <TouchableOpacity onPress={() => bs.current.snapTo(0)}><View><Text>Capture</Text></View></TouchableOpacity>
       </View> */}
-        
+
         <View style={styles.switch}>
           <Text style={styles.text}>Switch 1</Text>
 
@@ -561,117 +561,149 @@ const BathroomFour = ({navigation}) => {
             onValueChange={ switch1OnOff}
             value={isOnn1}
           /> */}
-         <SpinnerButton
-          disabled={flag}
-          buttonStyle={styles.buttonStyle}
-          isLoading={isOnn1loading}
-          buttonStyle={{ backgroundColor: isOnn1=='ON' ? '#fb8d4e' : '#eeeeee', width: 60, height: 35, borderRadius: 20, alignSelf: 'flex-end'  }}
-          spinnerType='BallIndicator'
-          onPress={switch1OnOff}
-          animationType={'flipInY'}
-          indicatorCount={10}
-          animateHeight={35}
-          animateWidth={60}
-          animateRadius={20}
-          animatedDuration={400}
-          spinnerColor={isOnn1=='ON' ? '#fff' : '#000'}
-          ide={20}
-        >
-          <Text style={{color: isOnn1=='ON' ? '#fff' : '#333'}}>{isOnn1}</Text>
-        </SpinnerButton> 
+          <SpinnerButton
+            disabled={flag}
+            isLoading={isOnn1loading}
+            buttonStyle={{
+              backgroundColor: isOnn1 == 'ON' ? '#fb8d4e' : '#eeeeee',
+              width: 60,
+              height: 35,
+              borderRadius: 20,
+              alignSelf: 'flex-end',
+            }}
+            spinnerType="BallIndicator"
+            onPress={switch1OnOff}
+            animationType={'flipInY'}
+            indicatorCount={10}
+            animateHeight={35}
+            animateWidth={60}
+            animateRadius={20}
+            animatedDuration={400}
+            spinnerColor={isOnn1 == 'ON' ? '#fff' : '#000'}
+            ide={20}>
+            <Text style={{color: isOnn1 == 'ON' ? '#fff' : '#333'}}>
+              {isOnn1}
+            </Text>
+          </SpinnerButton>
         </View>
         <View style={styles.switch}>
           <Text style={styles.text}>Switch 2</Text>
           <SpinnerButton
-         disabled={flag}
-         buttonStyle={{ backgroundColor: isOnn2=='ON' ? '#fb8d4e' : '#eeeeee', width: 60, height: 35, borderRadius: 20, alignSelf: 'flex-end'  }}
-          isLoading={isOnn2loading}
-          spinnerType='BallIndicator'
-          onPress={switch2OnOff}
-          animationType={'flipInY'}
-          indicatorCount={10}
-          animateHeight={35}
-          animateWidth={60}
-          animateRadius={20}
-          animatedDuration={700}
-          spinnerColor={isOnn2=='ON' ? '#fff' : '#000'}
-        >
-          <Text style={{color: isOnn2=='ON' ? '#fff' : '#333'}}>{isOnn2}</Text>
-        </SpinnerButton> 
+            disabled={flag}
+            buttonStyle={{
+              backgroundColor: isOnn2 == 'ON' ? '#fb8d4e' : '#eeeeee',
+              width: 60,
+              height: 35,
+              borderRadius: 20,
+              alignSelf: 'flex-end',
+            }}
+            isLoading={isOnn2loading}
+            spinnerType="BallIndicator"
+            onPress={switch2OnOff}
+            animationType={'flipInY'}
+            indicatorCount={10}
+            animateHeight={35}
+            animateWidth={60}
+            animateRadius={20}
+            animatedDuration={700}
+            spinnerColor={isOnn2 == 'ON' ? '#fff' : '#000'}>
+            <Text style={{color: isOnn2 == 'ON' ? '#fff' : '#333'}}>
+              {isOnn2}
+            </Text>
+          </SpinnerButton>
         </View>
-      
+
         <View style={styles.switch}>
-          <Text style={styles.text} >Switch 3</Text>
+          <Text style={styles.text}>Switch 3</Text>
           <SpinnerButton
-         disabled={flag}
-         buttonStyle={{ backgroundColor: isOnn3=='ON' ? '#fb8d4e' : '#eeeeee', width: 60, height: 35, borderRadius: 20, alignSelf: 'flex-end'  }}
-          isLoading={isOnn3loading}
-          spinnerType='BallIndicator'
-          onPress={switch3OnOff}
-          animationType={'flipInY'}
-          indicatorCount={10}
-          animateHeight={35}
-          animateWidth={60}
-          animateRadius={20}
-          animatedDuration={700}
-          spinnerColor={isOnn3=='ON' ? '#fff' : '#000'}
-        >
-          <Text style={{color: isOnn3=='ON' ? '#fff' : '#333'}}>{isOnn3}</Text>
-        </SpinnerButton> 
+            disabled={flag}
+            buttonStyle={{
+              backgroundColor: isOnn3 == 'ON' ? '#fb8d4e' : '#eeeeee',
+              width: 60,
+              height: 35,
+              borderRadius: 20,
+              alignSelf: 'flex-end',
+            }}
+            isLoading={isOnn3loading}
+            spinnerType="BallIndicator"
+            onPress={switch3OnOff}
+            animationType={'flipInY'}
+            indicatorCount={10}
+            animateHeight={35}
+            animateWidth={60}
+            animateRadius={20}
+            animatedDuration={700}
+            spinnerColor={isOnn3 == 'ON' ? '#fff' : '#000'}>
+            <Text style={{color: isOnn3 == 'ON' ? '#fff' : '#333'}}>
+              {isOnn3}
+            </Text>
+          </SpinnerButton>
         </View>
         <View style={styles.switch}>
           <Text style={styles.text}>Switch 4</Text>
           <SpinnerButton
-         disabled={flag}
-         buttonStyle={{ backgroundColor: isOnn4=='ON' ? '#fb8d4e' : '#eeeeee', width: 60, height: 35, borderRadius: 20, alignSelf: 'flex-end'  }}
-          isLoading={isOnn4loading}
-          spinnerType='BallIndicator'
-          onPress={switch4OnOff}
-          animationType={'flipInY'}
-          indicatorCount={10}
-          animateHeight={35}
-          animateWidth={60}
-          animateRadius={20}
-          animatedDuration={700}
-          spinnerColor={isOnn4=='ON' ? '#fff' : '#000'}
-        >
-          <Text style={{color: isOnn4=='ON' ? '#fff' : '#333'}}>{isOnn4}</Text>
-        </SpinnerButton>
-        </View>
-     
-        <View style={styles.switch}>
-          <Text style={styles.text} >Switch 5</Text>
-          
-        <SpinnerButton
-          disabled={flag}
-          style={styles.buttonStyle}
-          buttonStyle={{ backgroundColor: isOnn5=='ON' ? '#fb8d4e' : '#eeeeee', width: 60, height: 35, borderRadius: 20, alignSelf: 'flex-end'  }}
-          isLoading={isOnn5loading}
-          spinnerType='BallIndicator'
-          onPress={switch5OnOff}
-          animationType={'flipInY'}
-          indicatorCount={10}
-          animateHeight={35}
-          animateWidth={60}
-          animateRadius={20}
-          animatedDuration={700}
-          spinnerColor={isOnn5=='ON' ? '#fff' : '#000'}
-        >
-          <Text style={{color: isOnn5=='ON' ? '#fff' : '#333'}}>{isOnn5}</Text>
-        </SpinnerButton>
+            disabled={flag}
+            buttonStyle={{
+              backgroundColor: isOnn4 == 'ON' ? '#fb8d4e' : '#eeeeee',
+              width: 60,
+              height: 35,
+              borderRadius: 20,
+              alignSelf: 'flex-end',
+            }}
+            isLoading={isOnn4loading}
+            spinnerType="BallIndicator"
+            onPress={switch4OnOff}
+            animationType={'flipInY'}
+            indicatorCount={10}
+            animateHeight={35}
+            animateWidth={60}
+            animateRadius={20}
+            animatedDuration={700}
+            spinnerColor={isOnn4 == 'ON' ? '#fff' : '#000'}>
+            <Text style={{color: isOnn4 == 'ON' ? '#fff' : '#333'}}>
+              {isOnn4}
+            </Text>
+          </SpinnerButton>
         </View>
 
+        <View style={styles.switch}>
+          <Text style={styles.text}>Switch 5</Text>
+
+          <SpinnerButton
+            disabled={flag}
+            style={styles.buttonStyle}
+            buttonStyle={{
+              backgroundColor: isOnn5 == 'ON' ? '#fb8d4e' : '#eeeeee',
+              width: 60,
+              height: 35,
+              borderRadius: 20,
+              alignSelf: 'flex-end',
+            }}
+            isLoading={isOnn5loading}
+            spinnerType="BallIndicator"
+            onPress={switch5OnOff}
+            animationType={'flipInY'}
+            indicatorCount={10}
+            animateHeight={35}
+            animateWidth={60}
+            animateRadius={20}
+            animatedDuration={700}
+            spinnerColor={isOnn5 == 'ON' ? '#fff' : '#000'}>
+            <Text style={{color: isOnn5 == 'ON' ? '#fff' : '#333'}}>
+              {isOnn5}
+            </Text>
+          </SpinnerButton>
+        </View>
       </ScrollView>
     </View>
-    
   );
 };
 
 const styles = StyleSheet.create({
   editablefield: {
-    textAlign:'center',
+    textAlign: 'center',
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   livingroom: {
     textAlign: 'center',
@@ -679,80 +711,80 @@ const styles = StyleSheet.create({
     color: 'red',
   },
   row: {
-    flexDirection:'row',
+    flexDirection: 'row',
   },
   switch: {
-      alignItems: 'center',
-      elevation: 2,
-      backgroundColor: 'rgba(255,255,255,1)',
-      paddingBottom: 20,
-      paddingLeft: 20,
-      paddingRight: 20,
-      paddingTop: 20,
-      marginBottom:5,
-      justifyContent: 'space-between',
-      flexDirection:'row',
-      width:'100%',
-      borderRadius: 10,
-      opacity: 1
+    alignItems: 'center',
+    elevation: 2,
+    backgroundColor: 'rgba(255,255,255,1)',
+    paddingBottom: 20,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingTop: 20,
+    marginBottom: 5,
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    width: '100%',
+    borderRadius: 10,
+    opacity: 1,
   },
   header: {
-      backgroundColor:'#fa8642',
-      height: 80,
-      borderBottomLeftRadius: 20,
-      borderBottomRightRadius: 20,
-      flexDirection: 'row',
-      alignItems: 'center',
-      padding: 20
+    backgroundColor: '#fa8642',
+    height: 80,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 20,
   },
   pageTitle: {
     fontWeight: 'bold',
     fontSize: 20,
     color: '#fff',
-marginLeft: 15,
+    marginLeft: 15,
   },
   buttonStyle: {
-    alignSelf: 'flex-end' ,
-   backgroundColor: '#fee9dc',
-   width: 60, 
-   height: 35,
-   borderRadius: 20, 
+    alignSelf: 'flex-end',
+    backgroundColor: '#fee9dc',
+    width: 60,
+    height: 35,
+    borderRadius: 20,
   },
-  textstyle:{
+  textstyle: {
     fontSize: 14,
   },
 
   buttonStyle1: {
-    alignSelf: 'flex-end' ,
-   backgroundColor: '#fff',
-   width: 80, 
-   height: 40,
-   borderRadius: 20, 
+    alignSelf: 'flex-end',
+    backgroundColor: '#fff',
+    width: 80,
+    height: 40,
+    borderRadius: 20,
   },
   allSwitch: {
-    position:'relative',
+    position: 'relative',
   },
   text: {
     fontSize: 16,
     marginTop: 5,
     marginBottom: 5,
-    left:0,
+    left: 0,
     alignItems: 'flex-start',
-    display:'flex',
-    justifyContent: 'flex-start'
+    display: 'flex',
+    justifyContent: 'flex-start',
   },
   container: {
     backgroundColor: '#eaeaea',
     flex: 1,
     paddingLeft: 0,
     paddingRight: 0,
-    position: 'relative'
+    position: 'relative',
   },
   image: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
     marginTop: -20,
-    marginBottom: -20
+    marginBottom: -20,
   },
   commandButton: {
     padding: 15,

@@ -32,7 +32,7 @@ const LoginScreen = ({navigation}) => {
     let tempDate = new Date(currentDate);
   };
   //const { getAppart } = React.useContext(AuthContext);
-  const HOST = 'http://10.0.2.2/origin8solutions/loginapi.php?email=';
+  const HOST = 'http://origin8solutions.com/loginapi.php?email=';
   const userLogin = () => {
     console.log(password);
     if (!email.trim()) {

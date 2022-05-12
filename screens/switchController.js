@@ -569,10 +569,6 @@ const SwitchController = ({route, navigation}) => {
                       </Text>
                     </SpinnerButton>
                   </View>
-                  <Button
-                    title="Details"
-                    onPress={() => navigation.navigate('SwitchDetail')}
-                  />
                 </View>
               );
             }
