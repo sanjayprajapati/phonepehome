@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import FlashMessage from 'react-native-flash-message';
 import FormButton from '../components/FormButton';
 import FormInput from '../components/FormInput';
 import Dashboard from '../screens/Dashboard';
@@ -162,6 +163,7 @@ const LoginScreen = ({navigation}) => {
           Don't have an account? Create here
         </Text>
       </TouchableOpacity>
+      <FlashMessage position="top" />
     </View>
   );
 };
